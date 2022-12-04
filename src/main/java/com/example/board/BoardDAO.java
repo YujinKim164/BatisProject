@@ -28,16 +28,12 @@ public class BoardDAO {
         return jdbcTemplate.update(sql);
     }
     public int deleteBoard(int seq) {
-        String sql = "delete from BOARD where seq = "+ seq;
-        return jdbcTemplate.update(sql);
+        String sql = "delete from BOARD where seq = ?";
+        return jdbcTemplate.update(sql, new Object[]{seq});
     }
     public int updateBoard(BoardVO vo) {
-        String sql = "update BOARD set "
-                + "title=" + vo.getTitle()  + ","
-                + "writer=" + vo.getWriter() + ","
-                + "content=" + vo.getContent() + ","
-                + "category=" + vo.getCategory() + " where seq= " + vo.getSeq();
-        return jdbcTemplate.update(sql);
+        String sql = "update BOARD set title=?, writer=?, content=?, category=? where seq=?";
+        return jdbcTemplate.update(sql, new Object[]{vo.getTitle(), vo.getWriter(), vo.getContent(), vo.getCategory(), vo.getSeq()});
     }
 
     public BoardVO getBoard(int seq) {

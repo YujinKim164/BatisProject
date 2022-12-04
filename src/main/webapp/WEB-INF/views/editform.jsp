@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -13,7 +14,7 @@
 
 <h1>Edit Form</h1>
 <%--@elvariable id="boardVO" type=""--%>
-<form:form commandName="boardVO" method="POST" action="../editok">
+<form:form modelAttribute="u" method="POST" action="../editok">
   <form:hidden path="seq"/>
   <table id="edit">
     <tr><td>Category</td><td><form:input path="category" /></td></tr>
